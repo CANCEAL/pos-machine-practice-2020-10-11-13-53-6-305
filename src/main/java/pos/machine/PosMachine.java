@@ -43,4 +43,20 @@ public class PosMachine {
         }
         return String.valueOf(provideReceipt(productOfItems, frequencyOfItems));
     }
+
+    public String provideReceipt(List<Integer> totalOfItems, List<Integer> frequencyOfItems) {
+        String header = "***<store earning no money>Receipt***\n";
+        String lineSeparator = "----------------------\n";
+        String endLine = "**********************";
+        String itemList = "";
+
+        for (int items = 0; items<=itemInfos.size()-1; items++){
+            itemList += "Name: " + itemInfos.get(items).getName() + ", Quantity: " + frequencyOfItems.get(items) + ", Unit price: " + itemInfos.get(items).getPrice() + " (yuan), Subtotal: " + totalOfItems.get(items) + " (yuan)\n";
+        }
+
+        String total = "Total: " + (totalOfItems.get(0) + totalOfItems.get(1) + totalOfItems.get(2)) + " (yuan)\n";
+        String formattedReceipt = header + itemList + lineSeparator + total + endLine;
+
+        return formattedReceipt;
+    }
 }
