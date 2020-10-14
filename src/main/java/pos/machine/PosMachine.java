@@ -32,4 +32,15 @@ public class PosMachine {
 
         return String.valueOf(calculateItems(frequencyOfItems));
     }
+
+    public String calculateItems(List<Integer> frequencyOfItems) {
+        List<Integer> productOfItems = new ArrayList<>();
+        int product = 0;
+
+        for (int items = 0; items <= frequencyOfItems.size()-1; items++) {
+            product = itemInfos.get(items).getPrice() * frequencyOfItems.get(items);
+            productOfItems.add(product);
+        }
+        return String.valueOf(provideReceipt(productOfItems, frequencyOfItems));
+    }
 }
