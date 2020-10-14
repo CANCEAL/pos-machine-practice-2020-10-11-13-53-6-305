@@ -22,4 +22,14 @@ public class PosMachine {
         }
         return combineItems(itemNames);
     }
+
+    public String combineItems(List<String> itemNames) {
+        Set<String> hashSet = new HashSet<String>(itemNames);
+        List<Integer> frequencyOfItems = new ArrayList<>();
+
+        for (String str : hashSet)
+            frequencyOfItems.add(Collections.frequency(itemNames, str));
+
+        return String.valueOf(calculateItems(frequencyOfItems));
+    }
 }
