@@ -9,4 +9,17 @@ public class PosMachine {
        String formattedReceipt = decodeItems(barcodes);
        return formattedReceipt;
     }
+
+    public String decodeItems(List<String> barcodes) {
+        List<String> itemNames = new ArrayList<>();
+
+        for (int infoItems = 0; infoItems <= itemInfos.size()-1; infoItems++) {
+            for (int barcodeItems = 0; barcodeItems <= barcodes.size()-1; barcodeItems++) {
+                if (itemInfos.get(infoItems).getBarcode().equals(barcodes.get(barcodeItems))) {
+                    itemNames.add(itemInfos.get(infoItems).getName());
+                }
+            }
+        }
+        return combineItems(itemNames);
+    }
 }
